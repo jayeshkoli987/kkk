@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>Factorial App by Avanish</title> 
+    <style> 
+      * { 
+        font-size: 40px; 
+        font-family: sans-serif; 
+      } 
+      body { 
+        background-color: black; 
+        color: white; 
+      } 
+      .btn { 
+        width: 20%; 
+        border-radius: 15px; 
+        background-color: rgb(134, 47, 255); 
+      } 
+      .btn:hover { 
+        background-color: rgb(255, 0, 102); 
+      } 
+      #msg { 
+        word-wrap: break-word; 
+        overflow-wrap: break-word; 
+        max-width: 100%; 
+        font-size: 16px; 
+        text-align: center; 
+        padding: 10px; 
+      } 
+    </style> 
+  </head> 
+  <body> 
+    <center> 
+      <h1>Factorial App</h1> 
+      <form onsubmit="sum()"> 
+        <input type="number" placeholder="Enter a positive integer" id="num" /> 
+        <br /> 
+        <br /> 
+        <input type="submit" value="M1" class="btn" /> 
+        <input type="submit" value="M2" class="btn" /> 
+        <input type="submit" value="M3" class="btn" /> 
+      </form> 
+      <h2 id="msg" style="font-size: 30px"></h2> 
+      <script> 
+        function sum() { 
+          event.preventDefault(); 
+          let num = document.getElementById("num"); 
+          let msg = document.getElementById("msg"); 
+ 
+          if (num.value === "") { 
+            alert("Number is empty"); 
+            msg.innerHTML = ""; 
+            num.focus(); 
+            return; 
+          } 
+ 
+          let n = parseInt(num.value); 
+ 
+          if (n < 0) { 
+            alert("number should be min 0 ⚠️"); 
+            msg.innerHTML = ""; 
+            num.focus(); 
+            return; 
+          } 
+ 
+          let action = document.activeElement.value; 
+          let ans = ""; 
+ 
+          if (action === "M1") { 
+            let sum = 1n; 
+            for (let i = 1n; i <= BigInt(n); i++) { 
+              sum *= i; 
+            } 
+            ans = "M1 => " + sum; 
+            msg.innerHTML = ans; 
+          } else if (action === "M2") { 
+            let sum = 1n; 
+            let i = 1n; 
+            while (i <= BigInt(n)) { 
+              sum *= i; 
+              i++; 
+            } 
+            ans = "M2 => " + sum; 
+            msg.innerHTML = ans; 
+          } else if (action === "M3") { 
+            let sum = 1n; 
+            let i = 1n; 
+            do { 
+              sum *= i; 
+              i++; 
+            } while (i <= BigInt(n)); 
+            ans = "M3 => " + sum; 
+            msg.innerHTML = ans; 
+          } 
+        } 
+      </script> 
+    </center> 
+  </body> 
+</html>
